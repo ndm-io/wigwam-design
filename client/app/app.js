@@ -4,8 +4,6 @@
 
 const React = require('react');
 
-const Nav = require('./core/nav');
-
 const init = function () {
 
     const wrapperStyle = {
@@ -16,7 +14,6 @@ const init = function () {
         render: function () {
             return (
                 <div className="wrapper" style={wrapperStyle}>
-                    <Nav/>
                     {this.props.children}
                 </div>
             );
@@ -29,7 +26,7 @@ module.exports = {
         params: {
             title: "Wigwam Design",
             keywords: "interior,design,studio,lancashire,shropshire,wales,residential,commercial,services",
-            description: "Wigwam is a Lancashire based interior design studio specialising in residential projects for private individuals throughout the North West of England"
+            description: "Wigwam is a North Wales based interior design studio specialising in residential projects for private individuals"
         },
         templates: {
             header: 'header',

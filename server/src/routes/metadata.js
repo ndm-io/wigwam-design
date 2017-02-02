@@ -6,10 +6,8 @@ const fs = require('fs'),
 
 const pagesPath = path.join(__dirname, '../../../client/app/pages');
 
-const jsFilter = function (filename) {
-
-    //TODO: Return folders for require
-    return filename.substr(-3) === '.js';
+const jsFilter = function (file) {
+    return fs.statSync(path.join(pagesPath, file)).isDirectory();
 };
 
 const metaMap = function (file) {

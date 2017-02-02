@@ -1,53 +1,90 @@
 const React = require('react'),
     Link = require('react-router').Link;
 
-const AppState = require('../app-state');
+const OverlayMenu = require('./overlay-menu');
 
 const init = function () {
     return {
 
-        showOverlay: function () {
-            console.log(AppState);
+        propTypes: {
+            classes: React.PropTypes.string,
+            logo: React.PropTypes.string
+        },
+
+        getInitialState: function () {
+            return {
+                showOverlay: false
+            } ;
+        },
+
+        toggleOverlay: function () {
+            console.log('toggle');
+            this.setState({showOverlay: !this.state.showOverlay});
+        },
+
+        handleOverlayClick: function () {
+            console.log('overlay clicked');
         },
 
         render: function () {
+
+            const classes = "navbar navbar-fixed-top " + this.props.classes;
+
             return (
-                <nav className="navbar navbar-fixed-top">
+            <div className="navigation">
+
+                <nav className={classes}>
+
                     <div className="container">
+
                         <div className="navbar-header">
-                            <Link className="navbar-brand" to="/">
-                                <img src="/assets/images/svg/logo_wigwam_compact_white_100x35.svg" width="95"
-                                     alt="Wigwam Logo"/>
-                            </Link>
+                            <a className="navbar-brand" href="/">
+                                <img className="brand-logo"
+                                     src={this.props.logo}
+                                     width="95"
+                                     alt=""/>
+                            </a>
                         </div>
 
-                        <button onClick={this.showOverlay}>
 
-                            <span className="icon-bar"/>
-                            <span className="icon-bar"/>
-                            <span className="icon-bar"/>
-
-                        </button>
+                        <ul id="icons-navbar" className="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="index.html#" id="toggle-menu" className="show-overlay" title="Menu">
+                                    <span className="icon-bar"/>
+                                    <span className="icon-bar"/>
+                                    <span className="icon-bar"/>
+                                </a>
+                            </li>
+                        </ul>
 
                         <ul className="extra-navbar nav navbar-nav navbar-right">
                             <li>
-                                <Link to="/" title="Home">
+                                <a href="/" title="Home">
                                     Home
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link to="/about" title="About">
+                                <a href="/about" title="About">
                                     About
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link to="/contact" title="Contact">
+                                <a href="/shop" title="Shop">
+                                    Shop
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact" title="Contact">
                                     Contact
-                                </Link>
+                                </a>
                             </li>
                         </ul>
+
+
                     </div>
+
                 </nav>
+            </div>
             );
         }
     };

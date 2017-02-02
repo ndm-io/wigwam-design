@@ -1,0 +1,15 @@
+.navbar-button {
+    background: transparent;
+    border: none;
+    color: #FDFDFD;
+    padding: 15px;
+    line-height:20px;
+}
+
+.navbar-button :hover {
+    color: #cccccc;
+}
+
+.navbar-custom {
+    text-transform: uppercase;
+}
