@@ -9,10 +9,12 @@ const App = require('./app').component,
     Nomatch = require('./pages/nomatch').component;
 
 module.exports = (
+
     <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="about" component={About}/>
         <Route path="contact" component={Contact}/>
         <Route path="*" component={Nomatch}/>
     </Route>
+
 );

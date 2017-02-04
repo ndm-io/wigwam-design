@@ -11,26 +11,6 @@ var browserify = require('browserify'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant');
 
-const vortexScriptsOrder = [
-    "jquery-2.1.3.min.js",
-    "bootstrap.min.js",
-    "jquery.superslides.min.js",
-    "jquery.mb.YTPlayer.min.js",
-    "jquery.magnific-popup.min.js",
-    "owl.carousel.min.js",
-    "jquery.simple-text-rotator.min.js",
-    "imagesloaded.pkgd.js",
-    "isotope.pkgd.min.js",
-    "packery-mode.pkgd.min.js",
-    "appear.js",
-    "jquery.easing.1.3.js",
-    "wow.min.js",
-    "jquery.fitvids.js",
-    "jquery.parallax-1.1.3.js",
-    "smoothscroll.js",
-    "contact.js",
-    "custom.js"
-];
 
 const paths = {
     client: {
@@ -51,10 +31,6 @@ const paths = {
         assets: {
             src: './server/src/assets/**/*',
             dest: './public/assets'
-        },
-        legacy: {
-            src: "./client/app/legacy/js/*",
-            dest: "./public/js"
         }
     }
 };
@@ -67,14 +43,6 @@ gulp.task('img', function () {
             use: [pngquant()]
         }))
         .pipe(gulp.dest(paths.client.img.dest));
-});
-
-gulp.task('legacy',function () {
-    return gulp.src(paths.client.legacy.src)
-        .pipe(order(vortexScriptsOrder))
-        .pipe(concat('legacy.js'))
-        .pipe(uglify({mangle: true}))
-        .pipe(gulp.dest(paths.client.legacy.dest));
 });
 
 gulp.task('js', function () {
@@ -98,8 +66,6 @@ gulp.task('css', function () {
         .pipe(gulp.dest(paths.client.css.dest));
 });
 
-
-
 gulp.task('assets', function () {
     return gulp.src(paths.client.assets.src)
         .pipe(gulp.dest(paths.client.assets.dest))
@@ -113,7 +79,6 @@ gulp.task('watch', function () {
 
 const defaults = [
     'js',
-    'legacy',
     'css',
     'assets',
     'img',

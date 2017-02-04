@@ -2,66 +2,61 @@ const React = require('react');
 
 const init = function () {
 
-    const heroStyle = function (url) {
+    const urlFor = function (string) {
+        return "url(" + string + ")";
+    };
+
+    const parallaxHeight = function (percent) {
         return {
-            height: "100vh",
-            backgroundSize: "cover",
-            background: "url('" + url + "') no-repeat fixed center center"
+            height: percent + "vh"
         };
     };
 
-    const contentStyle = {
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        height: "100vh"
+    const backStyle = function (urlString) {
+        return {
+            backgroundImage: urlFor(urlString),
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat"
+        };
     };
 
     return {
 
         propTypes: {
             backgroundUrl: React.PropTypes.string.isRequired,
-            styles: React.PropTypes.string
+            heightPercent: React.PropTypes.number.isRequired,
+            dark: React.PropTypes.bool.isRequired
         },
 
-        componentDidMount: function () {
-
-        },
-        /*
-         render: function () {
-         return (
-         <div style={heroStyle(this.props.backgroundUrl)} className={this.props.styles}>
-         <div className="container">
-         <div className="row">
-         <div className="col-md-12 text-center" style={contentStyle}>
-         {this.props.children}
-         </div>
-         </div>
-         </div>
-         </div>
-         );
-         }
-         };
-         */
         render: function () {
+
+            let backClasses = "parallax__layer parallax__layer--back";
+
+            if (this.props.dark) {
+                backClasses = backClasses + " bg-dark-60"
+            }
+
+
             return (
-                <section className="module-hero module-parallax module-full-height bg-dark-60">
+                <section>
 
+                    <div className="parallax" style={parallaxHeight(this.props.heightPercent)}>
+                        <div className={backClasses} style={backStyle(this.props.backgroundUrl)}>
 
-                    <div className="hero-caption">
-                        <div className="hero-text">
+                        </div>
+                        <div className="parallax__layer parallax__layer--base">
 
-                            <h1 className="mh-line-size-1 font-alt m-b-50">WIGWAM DESIGN</h1>
-                            <h5 className="mh-line-size-4 font-alt">an interiors company</h5>
+                            {this.props.children}
 
                         </div>
                     </div>
-
 
                 </section>
             );
         }
     }
 };
+
 
 module.exports = React.createClass(init());

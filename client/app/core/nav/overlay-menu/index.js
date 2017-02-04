@@ -1,6 +1,8 @@
 const React = require('react'),
     Link = require('react-router').Link;
 
+const routes = require('../routes');
+
 const init = function () {
 
 
@@ -10,6 +12,10 @@ const init = function () {
             opacity: (show) ? "1" : "0"
         };
     };
+
+    const li = routes.map(function (route) {
+        return (<li key={route.route}><Link to={route.route} title={route.title}>{route.title}</Link></li>);
+    });
 
 
     return {
@@ -41,9 +47,7 @@ const init = function () {
                         <nav className="overlay-menu-nav">
                             <ul id="nav">
 
-                                <li><Link to="/">Home</Link></li>
-                                <li><Link to="/about">About</Link></li>
-                                <li><Link to="/contact">Contact</Link></li>
+                                {li}
 
                             </ul>
                         </nav>
@@ -53,7 +57,7 @@ const init = function () {
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm-12 text-center">
-                                    <p className="copyright font-alt m-b-0">© 2016 wigwam.design, All Rights
+                                    <p className="copyright font-alt m-b-0">© 2017 wigwam.design, All Rights
                                         Reserved.</p>
                                 </div>
                             </div>

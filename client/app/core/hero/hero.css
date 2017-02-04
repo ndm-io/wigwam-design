@@ -1,2 +1,39 @@
 
 
+/* Parallax base styles
+--------------------------------------------- */
+
+.parallax {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+    perspective-origin-x: 100%;
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform-origin-x: 100%;
+}
+
+.parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.parallax__layer--back {
+    -webkit-transform: translateZ(-1px) scale(2);
+    transform: translateZ(-1px) scale(2);
+}
+
+.text-white {
+    color: white;
+}
+
+
+
+

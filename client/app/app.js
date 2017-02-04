@@ -1,9 +1,6 @@
 'use strict';
 
-// Layout
-
 const React = require('react');
-
 const init = function () {
 
     const wrapperStyle = {
@@ -13,16 +10,20 @@ const init = function () {
     return {
         render: function () {
             return (
+
                 <div className="wrapper" style={wrapperStyle}>
-                    {this.props.children}
+
+                        {this.props.children}
+
                 </div>
+
             );
         }
     };
 };
 
 module.exports = {
-    metadata:{
+    metadata: {
         params: {
             title: "Wigwam Design",
             keywords: "interior,design,studio,lancashire,shropshire,wales,residential,commercial,services",
