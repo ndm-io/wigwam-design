@@ -2,9 +2,41 @@ const React = require('react'),
     Link = require('react-router').Link;
 
 const routes = require('./routes');
+const hasClass = require('../../core/has-class');
+const isBrowser = require('../../core/is-browser');
+
 const OverlayMenu = require('./overlay-menu');
 
 const init = function () {
+
+    const NAVBAR = "navbarTop";
+    const NAVBAR_TRANSPARENT = "navbar-transparent";
+
+    const navbarIsTransparent = function (element) {
+        return hasClass(element, NAVBAR_TRANSPARENT);
+    };
+
+    /*
+     componentDidMount: function () {
+
+
+
+     //const navbar = this.refs[NAVBAR];
+     document.documentElement.addEventListener('scroll', this.handleScroll);
+
+     function navbarAnimation(navbar, moduleHero) {
+     var topScroll = $(window).scrollTop();
+     if (navbar.length > 0 && navbatTrans !== false) {
+     if (topScroll >= 5) {
+     navbar.removeClass('navbar-transparent');
+     } else {
+     navbar.addClass('navbar-transparent');
+     }
+     }
+     }
+
+     },
+     */
 
     return {
 
@@ -23,9 +55,6 @@ const init = function () {
             this.setState({showOverlay: !this.state.showOverlay});
         },
 
-        handleOverlayClick: function () {
-            console.log('overlay clicked');
-        },
 
         render: function () {
 
@@ -46,7 +75,7 @@ const init = function () {
                     <OverlayMenu show={this.state.showOverlay} onCloseRequest={this.toggleOverlay}/>
                     <div className="navigation">
 
-                        <nav className={classes}>
+                        <nav ref={NAVBAR} className={classes}>
 
                             <div className="container">
 

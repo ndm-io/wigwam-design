@@ -17,7 +17,10 @@ const init = function () {
             backgroundImage: urlFor(urlString),
             backgroundSize: "cover",
             backgroundPosition: "center center",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
+            position: "fixed",
+            top: "0",
+            left: "0"
         };
     };
 

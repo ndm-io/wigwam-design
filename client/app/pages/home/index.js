@@ -7,10 +7,6 @@ const initHomePage = function () {
 
     return {
 
-        componentDidMount: function () {
-
-        },
-
         render: function () {
 
             return (

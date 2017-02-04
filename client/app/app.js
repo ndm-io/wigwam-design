@@ -1,19 +1,22 @@
 'use strict';
 
 const React = require('react');
+
 const init = function () {
 
     const wrapperStyle = {
         fontFamily: "Dosis, sans-serif"
     };
 
+
     return {
+
         render: function () {
             return (
 
-                <div className="wrapper" style={wrapperStyle}>
+                <div ref="body" className="wrapper" style={wrapperStyle}>
 
-                        {this.props.children}
+                    {this.props.children}
 
                 </div>
 
