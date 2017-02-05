@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const WheelEvent = require('./core/wheel-event');
 
 const init = function () {
 
@@ -11,10 +12,14 @@ const init = function () {
 
     return {
 
+        handleWheel: function (e) {
+            WheelEvent.postWheelEvent(e);
+        },
+
         render: function () {
             return (
 
-                <div ref="body" className="wrapper" style={wrapperStyle}>
+                <div ref="body" className="wrapper" style={wrapperStyle} onWheel={this.handleWheel}>
 
                     {this.props.children}
 

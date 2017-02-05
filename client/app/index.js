@@ -10,9 +10,14 @@ const routes = require('./routes'),
 
 if (isBrowser()) {
     const container = document.getElementById('root');
+
+    const update = function () {
+        window.scrollTo(0,0);
+    };
+
     if (container) {
         memoryHistory.push(window.location.pathname);
-        ReactDOM.render(<Router routes={routes} history={memoryHistory}/>, container);
+        ReactDOM.render(<Router routes={routes} history={memoryHistory} onUpdate={update}/>, container);
     }
 }
 

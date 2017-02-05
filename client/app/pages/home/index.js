@@ -28,6 +28,16 @@ const initHomePage = function () {
 
                     </Hero>
 
+                    <section className="module">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6 col-md-offset-3">
+                                    <h2>Content</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
 
                 </div>
 
