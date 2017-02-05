@@ -26,6 +26,12 @@
 }
 
 .parallax__layer--back {
+    background-size: cover;
+    background-position:center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
     -webkit-transform: translateZ(-1px) scale(2);
     transform: translateZ(-1px) scale(2);
 }
@@ -33,6 +39,25 @@
 .text-white {
     color: white;
 }
+
+/* Larger screens */
+@media (min-width: 769px) {
+    .parallax__layer--back {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    .parallax__layer--back {
+        position: absolute;
+        background-size: cover;
+    }
+}
+
+
 
 
 

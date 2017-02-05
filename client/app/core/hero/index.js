@@ -15,12 +15,6 @@ const init = function () {
     const backStyle = function (urlString) {
         return {
             backgroundImage: urlFor(urlString),
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            backgroundRepeat: "no-repeat",
-            position: "fixed",
-            top: "0",
-            left: "0"
         };
     };
 

@@ -3,6 +3,7 @@ const React = require('react'),
 
 const routes = require('./routes');
 const WheelEvent = require('../../core/wheel-event');
+const isMobile = require('../is-mobile');
 
 const OverlayMenu = require('./overlay-menu');
 
@@ -30,6 +31,8 @@ const init = function () {
 
         componentDidMount: function () {
 
+            //if (isMobile()) { return }
+
             const element = this.refs[NAVBAR];
             let startPageY = undefined;
 
@@ -45,6 +48,7 @@ const init = function () {
                 }
 
             });
+
         },
 
         componentWillUnmount: function () {
