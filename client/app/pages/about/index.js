@@ -2,7 +2,12 @@ const React = require('react');
 const Nav = require('../../core/nav');
 const Hero = require('../../core/hero');
 
+const Counter = require('../../core/counter');
+const ProgressBar = require('../../core/progress-bar');
+
 const init = function () {
+
+    const COUNTER_TIME = 1000;
 
     return {
 
@@ -61,41 +66,10 @@ const init = function () {
 
                                 <div className="col-sm-4">
 
-                                    <h6 className="progress-title font-alt">Design</h6>
-                                    <div className="progress">
-                                        <div className="progress-bar pb-dark" aria-valuenow="90" role="progressbar"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100">
-                                            <span className="font-alt"></span>
-                                        </div>
-                                    </div>
-
-                                    <h6 className="progress-title font-alt">Styling</h6>
-                                    <div className="progress">
-                                        <div className="progress-bar pb-dark" aria-valuenow="80" role="progressbar"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100">
-                                            <span className="font-alt"></span>
-                                        </div>
-                                    </div>
-
-                                    <h6 className="progress-title font-alt">Digital</h6>
-                                    <div className="progress">
-                                        <div className="progress-bar pb-dark" aria-valuenow="50" role="progressbar"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100">
-                                            <span className="font-alt"></span>
-                                        </div>
-                                    </div>
-
-                                    <h6 className="progress-title font-alt">3D</h6>
-                                    <div className="progress">
-                                        <div className="progress-bar pb-dark" aria-valuenow="30" role="progressbar"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100">
-                                            <span className="font-alt"></span>
-                                        </div>
-                                    </div>
+                                    <ProgressBar title="Design" value={90}/>
+                                    <ProgressBar title="Styling" value={80}/>
+                                    <ProgressBar title="Digital" value={50}/>
+                                    <ProgressBar title="3D" value={30}/>
 
                                 </div>
 
@@ -106,58 +80,31 @@ const init = function () {
 
                     </section>
 
-                    <section is class="module module-video bg-dark"
-                             data-background="assets/images/video_background.jpg">
+                    <section className="module bg-dark"
+                             style={{backgroundImage: "url('assets/images/video_background.jpg')"}}>
 
                         <div className="container">
 
                             <div className="row">
 
 
-                                <div className="col-sm-3 m-b-md-20">
-                                    <div className="counter-item">
-                                        <div className="counter-title font-alt">
-                                            <h5 className="font-alt counter-number" data-number="501"><span></span>
-                                            </h5> Cups of tea
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-3 m-b-md-20">
-                                    <div className="counter-item">
-                                        <div className="counter-title font-alt">
-                                            <h5 className="font-alt counter-number" data-number="36"><span></span>
-                                            </h5> Elle Decor Magazines
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-3 m-b-md-20">
-                                    <div className="counter-item">
-                                        <div className="counter-title font-alt">
-                                            <h5 className="font-alt counter-number" data-number="210"><span></span>k
-                                            </h5> Photos taken
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-3 m-b-md-20">
-                                    <div className="counter-item">
-                                        <div className="counter-title font-alt">
-                                            <h5 className="counter-number" data-number="98"><span></span>%</h5>
-                                            Happy clients
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <Counter title="Cups of tea"
+                                         to={501}
+                                         time={COUNTER_TIME}/>
+                                <Counter title="Elle Decor Magazines"
+                                         to={36}
+                                         time={COUNTER_TIME}/>
+                                <Counter title="Photos taken"
+                                         to={210}
+                                         time={COUNTER_TIME}/>
+                                <Counter title="Happy Clients"
+                                         to={98}
+                                         time={COUNTER_TIME}
+                                         suffix="%"/>
 
                             </div>
 
                         </div>
-
-
-                        <div is class="video-player"
-                             data-property="{videoURL:'https://youtu.be/JHRiaKEYeis', containment:'.module-video', quality:'hd720', startAt:0, stopAt:37, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0, mute:true}"></div>
 
 
                     </section>
