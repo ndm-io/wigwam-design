@@ -37,7 +37,7 @@ const init = function () {
                         <h6 className="progress-title font-alt">
                             {this.props.title}
                         </h6>
-                        <div className="progress">
+                        <div className="progress" style={{height: "4px"}}>
                             <div className="progress-bar pb-dark" style={{width: this.state.width}}/>
                         </div>
                     </div>

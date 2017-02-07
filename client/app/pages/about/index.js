@@ -5,6 +5,8 @@ const Hero = require('../../core/hero');
 const Counter = require('../../core/counter');
 const ProgressBar = require('../../core/progress-bar');
 
+const Testimonials = require('./testimonials');
+
 const init = function () {
 
     const COUNTER_TIME = 1000;
@@ -19,7 +21,9 @@ const init = function () {
                     <Nav classes="navbar-custom navbar-light navbar-transparent"
                          logo="assets/images/svg/logo_wigwam_compact_100x35.svg"/>
 
-                    <Hero backgroundUrl="assets/images/section-7.jpg" heightPercent={45} dark={false}>
+                    <Hero backgroundUrl="assets/images/section-7.jpg"
+                          heightPercent={45}
+                          backgroundClasses="">
 
                         <div className="hero-caption">
                             <div className="hero-text">
@@ -230,120 +234,8 @@ const init = function () {
 
                     </section>
 
-                    <section is class="module module-parallax bg-light-30"
-                             data-background="assets/images/section-3.jpg">
-
-                        <div className="container">
-
-                            <div className="row">
-
-                                <div className="col-sm-6 col-sm-offset-3">
-
-
-                                    <div className="owl-carousel slider-testimonials text-center">
-
-
-                                        <div className="item testimonial">
-                                            <h5 className="module-icon m-b-20">
-                                                <i className="ion-ios-chatboxes-outline"/>
-                                            </h5>
-                                            <div className="font-serif m-b-20">
-                                                Her practical experience and design education make her a a rounded
-                                                professional whilst
-                                                her
-                                                friendly and easy nature puts clients at ease very early in the
-                                                process. Her love for
-                                                the
-                                                industry and all things interiors is apparent throughout everything
-                                                she
-                                                does, this makes her a fantastic designer to work with.
-                                            </div>
-                                            <div className="quote-author font-alt">Claire / CW Interiors</div>
-                                        </div>
-
-                                        <div className="item testimonial">
-                                            <h5 className="module-icon m-b-20">
-                                                <i className="ion-ios-chatboxes-outline"/>
-                                            </h5>
-                                            <div className="font-serif m-b-20">
-                                                A personable individual with a eye for detail and a flair for
-                                                design. We commission Sam
-                                                on a
-                                                regular basis to help style our showhomes, we would highly recommend
-                                                them. They are very
-                                                creative and excellent at producing creative designs and
-                                                installation.
-                                            </div>
-                                            <div className="quote-author font-alt">Alex, Stanza Style.</div>
-                                        </div>
-
-                                        <div className="item testimonial">
-                                            <h5 className="module-icon m-b-20">
-                                                <i className="ion-ios-chatboxes-outline"/>
-                                            </h5>
-                                            <div className="font-serif m-b-20">
-                                                We have worked alongside Sam at Wigwam Design on many interior
-                                                projects for quite a few
-                                                years now. Sam is very thoughtful, creative, has great style and a
-                                                strong work ethic.
-                                                Inspirational ideas and schemes. A joy to work with: Great teamwork!
-                                            </div>
-                                            <div className="quote-author font-alt">Suzie, Design Fix Interiors.
-                                            </div>
-                                        </div>
-
-                                        <div className="item testimonial">
-                                            <h5 className="module-icon m-b-20">
-                                                <i className="ion-ios-chatboxes-outline"/>
-                                            </h5>
-                                            <div className="font-serif m-b-20">
-                                                Pleasure to deal with, Sam at Wigwam design is the ultimate
-                                                professional,
-                                                love her attention to detail and you can always rely on Sam to think
-                                                outside the box
-                                                when needed. Sam will put you at ease from the moment you meet with
-                                                her, and has a great
-                                                knowledge and understanding of interior design wether it's a period
-                                                look your after or a more
-                                                modern contempery design. Looking forward to working with Sam
-                                                @wigwam design on all my future
-                                                projects. #WigWam Design
-                                            </div>
-                                            <div className="quote-author font-alt">Ian, Client.</div>
-                                        </div>
-
-                                        <div className="item testimonial">
-                                            <h5 className="module-icon m-b-20">
-                                                <i className="ion-ios-chatboxes-outline"/>
-                                            </h5>
-                                            <div className="font-serif m-b-20">
-                                                Samantha from Wigwam design has been working with me for the past 6
-                                                months on
-                                                designing the interior of our new timber-framed house in Shropshire.
-                                                From the start,
-                                                Sam has been the true professional and quickly grasps an idea of
-                                                your style and tastes
-                                                and works with you to design stylish and practical interiors. We are
-                                                extremely happy
-                                                with Sam's ideas and those ideas can be put into reality with her
-                                                great number of
-                                                contacts that can source or make your visions come to life.
-                                                <br/>
-                                                I can highly recommend Sam, we will certainly be using her again
-                                                on future projects.
-                                            </div>
-                                            <div className="quote-author font-alt">Josh, Client.</div>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
+                    <section className="module-testimonials" style={{backgroundImage: "url('assets/images/section-3.jpg')"}}>
+                        <Testimonials />
                     </section>
 
                 </div>

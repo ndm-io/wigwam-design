@@ -14,6 +14,7 @@
 .navbar-custom {
     text-transform: uppercase;
     font-size: 2em;
+    font-family: Dosis, sans-serif;
     -webkit-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
     -moz-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
     -o-transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);

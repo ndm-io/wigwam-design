@@ -23,16 +23,12 @@ const init = function () {
         propTypes: {
             backgroundUrl: React.PropTypes.string.isRequired,
             heightPercent: React.PropTypes.number.isRequired,
-            dark: React.PropTypes.bool.isRequired
+            backgroundClasses: React.PropTypes.string.isRequired
         },
 
         render: function () {
 
-            let backClasses = "parallax__layer parallax__layer--back";
-
-            if (this.props.dark) {
-                backClasses = backClasses + " bg-dark-60"
-            }
+            let backClasses = "parallax__layer parallax__layer--back " + this.props.backgroundClasses;
 
 
             return (

@@ -15,7 +15,9 @@ const initHomePage = function () {
                     <Nav classes="navbar-custom navbar-transparent"
                          logo="assets/images/svg/logo_wigwam_compact_white_100x35.svg"/>
 
-                    <Hero backgroundUrl="assets/images/section-5.jpg" heightPercent={100} dark={true}>
+                    <Hero backgroundUrl="assets/images/section-5.jpg"
+                          heightPercent={100}
+                          backgroundClasses="bg-dark-60">
 
                         <div className="hero-caption">
                             <div className="hero-text">

@@ -1,0 +1,21 @@
+.testimonial {
+    color: black;
+    font-size: 1.2em;
+    background-color: rgba(250,250,250,0.7);
+    border-radius: 10px;
+
+}
+
+.module-testimonials {
+    height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-position: center;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}

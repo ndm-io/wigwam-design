@@ -8,7 +8,7 @@ const WheelEvent = require('./core/wheel-event');
 const init = function () {
 
     const wrapperStyle = {
-        fontFamily: "Dosis, sans-serif"
+        fontFamily: "Open Sans, sans-serif"
     };
 
 
@@ -20,14 +20,16 @@ const init = function () {
 
         render: function () {
             return (
+
                 <div>
                     <div ref="body" className="wrapper" style={wrapperStyle} onWheel={this.handleWheel}>
 
-                        {this.props.children}
+                            {this.props.children}
 
                     </div>
                     <Footer />
                 </div>
+
 
             );
         }
