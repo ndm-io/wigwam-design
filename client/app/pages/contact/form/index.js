@@ -1,9 +1,11 @@
-const React = require('react');
-const Form = require('./form');
+const React         = require('react');
+const Form          = require('./form');
+const FormRenderer  = require('./form-renderer');
 
 function init() {
 
     const form = Form();
+    const formRenderer = FormRenderer();
 
     return {
 
@@ -53,13 +55,13 @@ function init() {
 
         render: function () {
             let component;
-            console.log("render", this.state);
+
             if(!this.state.response && !this.state.responseError) {
-                component = form.renderForm(this);
+                component = formRenderer.renderForm(this);
             } else if (this.state.response) {
-                component = form.renderResponse(this.state.response);
+                component = formRenderer.renderResponse(this.state.response);
             } else if (this.state.responseError) {
-                component = form.renderError();
+                component = formRenderer.renderError();
             }
 
             return component;

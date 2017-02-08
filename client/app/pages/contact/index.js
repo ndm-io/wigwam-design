@@ -91,22 +91,22 @@ const init = function () {
 
                 </div>
             )
-            }
-            };
-            };
+        }
+    };
+};
 
-            module.exports = {
-                metadata: {
-                route: '/contact',
-                params: {
-                title: "Wigwam Design | Contact Us",
-                keywords: "contact,interior,design,wigwam,lancashire,shropshire",
-                description: "Contact us to find out more. You can send us a message here or just use your favourite social media"
-            },
-                templates: {
-                header: 'header',
-                footer: 'footer'
-            }
-            },
-                component: React.createClass(init())
-            };
+module.exports = {
+    metadata: {
+        route: '/contact',
+        params: {
+            title: "Wigwam Design | Contact Us",
+            keywords: "contact,interior,design,wigwam,lancashire,shropshire",
+            description: "Contact us to find out more. You can send us a message here or just use your favourite social media"
+        },
+        templates: {
+            header: 'header',
+            footer: 'footer'
+        }
+    },
+    component: React.createClass(init())
+};

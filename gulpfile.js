@@ -1,15 +1,15 @@
-var browserify = require('browserify'),
-    gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-    notify = require("gulp-notify"),
-    gulpif = require("gulp-if"),
-    cssmin = require('gulp-cssmin'),
-    order = require('gulp-order'),
-    concat = require('gulp-concat'),
-    imagemin = require('gulp-imagemin'),
-    pngquant = require('imagemin-pngquant');
+var browserify  = require('browserify'),
+    gulp        = require('gulp'),
+    uglify      = require('gulp-uglify'),
+    source      = require('vinyl-source-stream'),
+    buffer      = require('vinyl-buffer'),
+    notify      = require("gulp-notify"),
+    gulpif      = require("gulp-if"),
+    cssmin      = require('gulp-cssmin'),
+    order       = require('gulp-order'),
+    concat      = require('gulp-concat'),
+    imagemin    = require('gulp-imagemin'),
+    pngquant    = require('imagemin-pngquant');
 
 
 const paths = {
@@ -31,6 +31,9 @@ const paths = {
         assets: {
             src: './server/src/assets/**/*',
             dest: './public/assets'
+        },
+        tests: {
+            src: './client/app/**/*.js'
         }
     }
 };
@@ -85,4 +88,12 @@ const defaults = [
     'watch'
 ];
 
+const build = [
+    'js',
+    'css',
+    'assets',
+    'img'
+];
+
 gulp.task('default', defaults);
+gulp.task('build', build);
