@@ -3,6 +3,8 @@ const Form = require('./form');
 
 function init() {
 
+    const form = Form();
+
     return {
 
         getInitialState: function () {
@@ -11,7 +13,8 @@ function init() {
                 email: "",
                 message: "",
                 errors: {},
-                response: "Oh dear this is embarrassing, an error has occured. Try social media or email perhaps?"
+                response: undefined,
+                responseError: undefined
             }
         },
 
@@ -27,24 +30,22 @@ function init() {
         submit: function (event) {
             event.preventDefault();
 
-            const errors = Form.errorsFrom(this.state);
+            const errors = form.errorsFrom(this.state);
 
-            if (Form.hasErrors(errors)) {
+            if (form.hasErrors(errors)) {
                 this.setState({errors: errors});
                 return;
             }
 
             this.setState({errors: {}});
-            const data = Form.dataFrom(this.state);
-
             const that = this;
 
-            Form.submit(data, "/message")
+            form.submit(form.dataFrom(this.state))
                 .then(function (response) {
-                    console.log("response", response);
+                    that.setState({response: response.message});
                 })
-                .catch(function (reason) {
-                    that.setState({response: reason});
+                .catch(function (response) {
+                    that.setState({responseError: response.message});
                 });
 
 
@@ -52,61 +53,13 @@ function init() {
 
         render: function () {
             let component;
-
-            if(!this.state.response) {
-                component = (
-                    <form id="contact-form" role="form" onSubmit={this.submit}>
-
-                        <div className="form-group">
-                            <label className="sr-only" htmlFor="name">Name</label>
-                            <input type="text"
-                                   className="form-control"
-                                   name="name"
-                                   placeholder="Your Name*"
-                                   onChange={this.handleChange}/>
-
-                            <p className="contact-validation-error">{this.state.errors.name}</p>
-                        </div>
-
-                        <div className="form-group">
-                            <label className="sr-only" htmlFor="email">Your Email</label>
-                            <input type="email"
-                                   name="email"
-                                   className="form-control"
-                                   placeholder="Your E-mail*"
-                                   onChange={this.handleChange}/>
-                            <p className="contact-validation-error">{this.state.errors.email}</p>
-                        </div>
-
-                        <div className="form-group">
-                        <textarea className="form-control"
-                                  name="message"
-                                  rows="7"
-                                  placeholder="Message*"
-                                  onChange={this.handleChange}/>
-                            <p className="contact-validation-error">{this.state.errors.message}</p>
-                        </div>
-
-                        <div className="text-center">
-                            <button className="btn btn-block btn-round btn-d"
-                                    onClick={this.submit}>
-                                Submit
-                            </button>
-                        </div>
-
-                    </form>
-                );
-            } else {
-                component = (
-                    <div className="row">
-                        <div className="col-12">
-                            <h2 className="module-title font-alt">Ooops</h2>
-                            <div className="module-subtitle font-serif">
-                                {this.state.response}
-                            </div>
-                        </div>
-                    </div>
-                );
+            console.log("render", this.state);
+            if(!this.state.response && !this.state.responseError) {
+                component = form.renderForm(this);
+            } else if (this.state.response) {
+                component = form.renderResponse(this.state.response);
+            } else if (this.state.responseError) {
+                component = form.renderError();
             }
 
             return component;
