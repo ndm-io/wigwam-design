@@ -6,6 +6,7 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 const Api = require('../client/app/api');
+const Fetch = require('./mock-fetch');
 
 describe('Client Api Model', function () {
 
@@ -19,14 +20,46 @@ describe('Client Api Model', function () {
 
     describe('#post', function () {
 
-        it('should reject missing to url', function() {
+        it('should reject missing data', function () {
 
-            const api = Api();
+            const mockFetch = Fetch(false, {status: "error", message: "Sadly it appear corrupt data got in"});
+            const api = Api(mockFetch);
+            const data = undefined;
+            const to = '/valid';
+
+            return expect(api.post(data, to)).to.be.rejected;
+
+        });
+
+        it('should reject missing url', function () {
+
+            const mockFetch = Fetch(false, {status: "error", message: "Sadly it appear corrupt data got in"});
+            const api = Api(mockFetch);
             const data = validData();
             const to = undefined;
 
-            const result = api.post(data, to);
-            return expect(result).to.be.rejected;
+            return expect(api.post(data, to)).to.be.rejected;
+
+        });
+
+        it('should reject on undefined url undefined data object', function () {
+
+            const mockFetch = Fetch(false, {status: "error", message: "Sadly it appear corrupt data got in"});
+            const api = Api(mockFetch);
+            const data = undefined;
+            const to = undefined;
+
+            return expect(api.post(data, to)).to.be.rejected;
+        });
+
+        it('should eventually return status and message properties', function () {
+
+            const mockFetch = Fetch(true, {status: "ok", message: "This message was sent correctly"});
+            const api = Api(mockFetch);
+            const data = validData();
+            const to = '/message';
+
+            return expect(api.post(data, to)).to.eventually.have.all.keys('status', 'message');
 
         });
 

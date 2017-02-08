@@ -53,7 +53,7 @@ const initMainRoutes = function (server) {
 };
 
 const initApiRoutes = function (server) {
-    return server;
+    return mod(server, "./src/routes/api");
 };
 
 
