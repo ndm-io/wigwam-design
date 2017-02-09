@@ -7,9 +7,7 @@ const matchedRouteHandler = require('./matchedRouteHandler');
 
 const initRouteHandler = function (server) {
 
-    //TODO: Need a regex to hit all non page routes
-
-    server.app.get('*', function (req, res) {
+    server.app.get("*", function (req, res) {
         match({routes: routes, location: req.url}, matchedRouteHandler(req, res));
     });
 

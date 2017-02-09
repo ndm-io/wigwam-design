@@ -56,6 +56,18 @@ const initApiRoutes = function (server) {
     return mod(server, "./src/routes/api");
 };
 
+const initErrorRoutes = function (server) {
+
+    server.app.use(function (req, res) {
+        res.sendStatus(404);
+    });
+
+    server.app.use(function (req, res) {
+        res.sendStatus(500);
+    });
+
+    return server;
+};
 
 const start = function (server) {
     server.http.listen(server.port);
@@ -67,5 +79,6 @@ module.exports = {
     init: init,
     initMainRoutes: initMainRoutes,
     initApiRoutes: initApiRoutes,
+    initErrorRoutes: initErrorRoutes,
     start: start
 };

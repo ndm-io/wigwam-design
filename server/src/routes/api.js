@@ -5,7 +5,7 @@ const initRouteHandler = function (server) {
     server.app.get('/api/message', function (req, res, next) {
         const renderTimer = Timer();
 
-        const response = {status:"OK", message: "Message end point hit"};
+        const response = {status:"OK", message: "Message end point hit", url: req.url};
 
         console.log('Api request time: %s : %d', req.url, renderTimer.end());
 

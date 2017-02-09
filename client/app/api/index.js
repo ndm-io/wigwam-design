@@ -30,11 +30,9 @@ function init(fetchObject) {
                 body: data
             })
                 .then(function (response) {
-                    console.log(response);
                     resolve(response);
                 })
                 .catch(function (response) {
-                    console.log(response);
                     reject(response);
                 });
 
