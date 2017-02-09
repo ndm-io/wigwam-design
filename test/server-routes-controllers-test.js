@@ -15,7 +15,7 @@ describe('Server Router Controllers', function () {
        it('has objects with route, method and handler keys', function () {
 
            controllers.map(function (controller) {
-               expect(controller).to.have.all.keys('route', 'method', 'handler');
+               expect(controller).to.have.any.keys('route', 'method', 'handler');
            });
 
        });
