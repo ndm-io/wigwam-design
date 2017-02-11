@@ -46,4 +46,3 @@ jspm_packages
 public/
 
 # Environment Variables
-.env
