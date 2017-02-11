@@ -29,6 +29,20 @@ function init() {
         return (data.name.length > 0 && data.email.length > 0 && re.test(data.email));
     };
 
+    obj.formatMessage = function (data) {
+
+        if (!checkData(data)) return;
+
+        return [
+            'New Msg: ',
+            data.name,
+            '\n',
+            data.email,
+            '\n',
+            data.message
+        ].join('');
+    };
+
     obj.handler = function (req, res, next) {
         const response = {status: "OK", message: "API endpoint hit", url: req.url, time: new Date()};
         setTimeout(function () {

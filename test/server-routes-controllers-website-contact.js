@@ -34,6 +34,9 @@ describe('Server: Website Contact Controller', function () {
             expect(controller.route.substring(0, 4)).to.equal('/api');
 
         });
+    });
+
+    describe('#isEmail', function () {
 
         it('has email regex for invalid emails', function () {
 
@@ -68,37 +71,63 @@ describe('Server: Website Contact Controller', function () {
 
         });
 
-        it('strips tags from name property', function () {
+    });
 
+    describe('#dataFromBody', function () {
+
+
+        it('strips tags from name property', function () {
+            expect(true).to.equal(false);
         });
 
         it('strips tags from email property', function () {
-
+            expect(true).to.equal(false);
         });
 
         it('strips tags from message property', function () {
-
-        });
-
-        it('trims a message to 200 chars', function () {
-
-        });
-
-        it('trims name to 100 chars', function () {
-
-        });
-
-        it('trims email to 254 chars', function () {
-
-        });
-
-        it('ensures name is longer than 0', function () {
-
-        });
-
-        it('ensures email is longer than 0', function () {
-
+            expect(true).to.equal(false);
         });
 
     });
+
+    describe('#trim', function () {
+
+
+        it('trims a message to 200 chars', function () {
+            expect(true).to.equal(false);
+        });
+
+        it('trims name to 100 chars', function () {
+            expect(true).to.equal(false);
+        });
+
+        it('trims email to 254 chars', function () {
+            expect(true).to.equal(false);
+        });
+
+    });
+
+    describe('#checkData', function () {
+
+
+        it('ensures name is longer than 0', function () {
+            expect(true).to.equal(false);
+        });
+
+        it('ensures email is longer than 0', function () {
+            expect(true).to.equal(false);
+        });
+
+    });
+
+    describe('#formatMessage', function () {
+
+
+        it('does not attempt to format an incorrectly formed message', function () {
+            expect(true).to.equal(false);
+        });
+
+    });
+
+
 });

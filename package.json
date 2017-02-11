@@ -32,6 +32,7 @@
     "compression": "^1.6.2",
     "connect-assets": "^5.3.2",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "express-validator": "^2.20.8",
     "gulp": "^3.9.1",

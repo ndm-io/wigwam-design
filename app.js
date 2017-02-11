@@ -1,3 +1,7 @@
+require('dotenv').load();
+
+console.log(process.env);
+
 const Server = require('./server');
 
 
