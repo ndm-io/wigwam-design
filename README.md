@@ -24,6 +24,8 @@ This is a nodejs app with a client react app
 |           +-- controllers
 |               |
 |               +-- handlers // files in here are auto routed and required
+|               |
+|               +-- methods // exported methods to make controllers testable
 |       +-- utils
 |       +-- views
 |
@@ -34,5 +36,40 @@ This is a nodejs app with a client react app
 
 ```
 
+###Controllers / Handlers
 
+.js files in <code>/server/src/routes/controllers/handlers</code> should all
+have the following structure:
+
+```
+{
+    method: 'post', //or get
+    route: '/api...',
+    dependencies: [
+        'required-module1' // array of dependency names (gets required and injected into handler)
+    ]
+    handler: function (dependencies) { .. } // a fn which 
+                                            // returns fn(req, res, next) for
+                                            // controller pattern
+    
+}
+```
+
+All *.js files in the handler directory get exported and setup with the
+route specified in the <code>route</code> property. The handler function gets
+its dependencies injected in the format:
+
+```
+{
+    twilio: [function],
+    object-assign: [function]
+}
+```
+
+So to access a dependency within the controller (req, res, next) fn
+access the dependencies such as:
+
+<code>
+const client = dependencies.twilio.RestClient()
+</code>
 
