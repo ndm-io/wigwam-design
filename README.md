@@ -46,7 +46,8 @@ have the following structure:
     method: 'post', //or get
     route: '/api...',
     dependencies: [
-        'required-module1' // array of dependency names (gets required and injected into handler)
+        'twilio',        // array of dependency names (gets required and injected into handler)
+        'object-assign'
     ]
     handler: function (dependencies) { .. } // a fn which 
                                             // returns fn(req, res, next) for

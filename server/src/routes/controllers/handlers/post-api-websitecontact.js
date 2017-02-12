@@ -1,4 +1,3 @@
-const Promise = require('promise');
 const hasDependencies = require('../methods/has-dependencies');
 const methods = require('../methods/post-api-websitecontact');
 
