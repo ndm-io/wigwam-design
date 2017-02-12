@@ -54,7 +54,7 @@ function init() {
                 resolve(message);
 
             } else {
-                reject("The supplied message was invalid");
+                reject(new Error("The supplied message was invalid"));
             }
 
         });

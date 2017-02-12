@@ -1,3 +1,4 @@
+const Promise = require('promise');
 const chai = require('chai');
 const chaiAsPromised = require("chai-as-promised");
 
@@ -7,17 +8,35 @@ const expect = chai.expect;
 const controller = require('../server/src/routes/controllers/handlers/post-api-websitecontact');
 const methods = require('../server/src/routes/controllers/methods/post-api-websitecontact');
 
+const mockTwilioRequireOutput = function (checkFn, done) {
+    return {
+        RestClient: function () {
+            return {
+                messages: {
+                    create: function (data) {
+                        const result = checkFn(data);
+                        return new Promise(function (resolve, reject) {
+                            if (result) {
+                                reject(result);
+                            } else {
+                                resolve();
+                            }
+                            done();
+                        });
+
+                    }
+                }
+            }
+        }
+    }
+};
+
 describe('Server: Website Contact Controller', function () {
 
     describe('correctly exports data and handler function', function () {
 
         it('has route, method and handler keys', function () {
-            expect(controller).to.have.any.keys('route', 'method', 'handler');
-
-        });
-
-        it('has a handler functions', function () {
-            expect(controller.handler).to.be.a('function');
+            expect(controller).to.have.any.keys('route', 'method', 'handler', 'dependencies');
 
         });
 
@@ -291,9 +310,14 @@ describe('Server: Website Contact Controller', function () {
             return {
                 send: function (response) {
                     if (compareResult(response, expectedResult)) {
-                        done();
+                        if (done) { done(); }
                     } else {
-                        done(new Error("res.send is sent with invalid response"));
+                        const result = "res.send(" + JSON.stringify(response) + ")";
+                        if  (done) {
+                            done(new Error(result));
+                        } else {
+                            throw new Error(result);
+                        }
                     }
 
                 }
@@ -307,14 +331,23 @@ describe('Server: Website Contact Controller', function () {
         it('sends response to client on invalid data', function (done) {
 
             const res = generateRes(errorResult, done);
-            controller.handler({body: undefined}, res);
+
+            const mock = mockTwilioRequireOutput(function(data) {
+                return;
+            });
+
+            controller.handler({twilio: mock})({body: undefined}, res);
 
         });
 
         it('sends response to client on valid data', function (done) {
 
             const res = generateRes(successResult, done);
-            controller.handler(req, res);
+            const mock = mockTwilioRequireOutput(function(data) {
+                return;
+            });
+
+            controller.handler({twilio: mock})(req, res);
 
         });
 
@@ -344,6 +377,25 @@ describe('Server: Website Contact Controller', function () {
             const message = "This is a short message";
             const result = methods.twilioMessageFrom(message);
             expect(result.body).to.equal(message);
+        });
+
+        it('correctly forms a twilio object', function(done) {
+
+            const mock = mockTwilioRequireOutput(function (data) {
+                if (typeof data === 'string') {
+                    return;
+                } else {
+                    return new Error("Twilio object not correctly formed");
+                }
+
+            }, done);
+
+            const res = generateRes(errorResult);
+
+            controller.handler({twilio: mock})(req, res);
+
+
+
         });
 
 
