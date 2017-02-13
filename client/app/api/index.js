@@ -1,17 +1,9 @@
 const Promise = require('promise');
 const routes = require('./routes');
-const isBrowser = require('../core/is-browser');
 
 require('whatwg-fetch');
 
-function init(fetchObject) {
-
-    let _fetch;
-    if (fetchObject) {
-        _fetch = fetchObject;
-    } else if (isBrowser() && fetch) {
-        _fetch = fetch;
-    }
+function init() {
 
     const post = function (data, to) {
         return new Promise(function (resolve, reject) {
@@ -25,12 +17,24 @@ function init(fetchObject) {
                 return;
             }
 
-            _fetch(to, {
-                method: "post",
-                body: data
-            })
+            const object = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify( data )
+            };
+
+            fetch(to, object)
                 .then(function (response) {
-                    resolve(response);
+
+                    if (response.ok) {
+                        resolve(response.json());
+                    } else {
+                        reject(response);
+                    }
+
                 })
                 .catch(function (response) {
                     reject(response);

@@ -46,8 +46,6 @@ const init = function () {
 
                                     <Form />
 
-                                    <div style={{height: "30px"}}></div>
-
                                 </div>
 
                                 <div className="col-sm-4">

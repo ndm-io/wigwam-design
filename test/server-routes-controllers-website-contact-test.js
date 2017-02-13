@@ -394,8 +394,6 @@ describe('Server: Website Contact Controller', function () {
 
             controller.handler({twilio: mock})(req, res);
 
-
-
         });
 
 

@@ -25,11 +25,12 @@ function init() {
                 .then(function (message) {
                     return client.messages.create(message);
                 })
-                .then(function () {
-                    res.send({status: "ok", message: "Your message has been successfully sent"});
+                .then(function (message) {
+                    res.send({message: "Your message has been successfully sent, somebody will be in touch shortly."});
                 })
                 .catch(function (error) {
-                    res.send({status: "error", message: "Oh dear, Your message could not be sent.", error: error});
+                    res.sendStatus(500);
+                    res.send({message: "Oh dear, Your message could not be sent.", error: error});
                 });
 
         }

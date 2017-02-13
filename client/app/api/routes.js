@@ -1,3 +1,3 @@
 module.exports = {
-    postContactFormData: "/messages"
+    postContactFormData: "/api/v1/send"
 };

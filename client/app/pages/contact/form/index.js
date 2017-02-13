@@ -1,6 +1,6 @@
-const React         = require('react');
-const Form          = require('./form');
-const FormRenderer  = require('./form-renderer');
+const React = require('react');
+const Form = require('./form');
+const FormRenderer = require('./form-renderer');
 
 function init() {
 
@@ -15,8 +15,7 @@ function init() {
                 email: "",
                 message: "",
                 errors: {},
-                response: undefined,
-                responseError: undefined
+                response: '',
             }
         },
 
@@ -46,25 +45,15 @@ function init() {
                 .then(function (response) {
                     that.setState({response: response.message});
                 })
-                .catch(function (response) {
-                    that.setState({responseError: response.message});
+                .catch(function () {
+                    that.setState({response: "Oh no, it looks like something went wrong, try another means of contact?"});
                 });
 
 
         },
 
         render: function () {
-            let component;
-
-            if(!this.state.response && !this.state.responseError) {
-                component = formRenderer.renderForm(this);
-            } else if (this.state.response) {
-                component = formRenderer.renderResponse(this.state.response);
-            } else if (this.state.responseError) {
-                component = formRenderer.renderError();
-            }
-
-            return component;
+            return formRenderer.renderForm(this);
         }
     };
 }
